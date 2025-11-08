@@ -8,12 +8,14 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
     body{background:#020b19;color:#fff;overflow-x:hidden;line-height:1.6}
+    img{max-width:100%;height:auto;display:block}
 
     /* Header */
     header{background:#e91e63;display:flex;justify-content:space-between;align-items:center;
       padding:20px 70px;position:fixed;width:100%;top:0;z-index:999}
     header h1{font-size:28px;font-weight:700;color:#fff}
-    nav a{color:#fff;text-decoration:none;margin:0 20px;font-weight:600;transition:.3s}
+    nav{display:flex;gap:20px;flex-wrap:wrap}
+    nav a{color:#fff;text-decoration:none;margin:0 0;font-weight:600;transition:.3s}
     nav a:hover{color:#ffe}
     section{padding:130px 80px 80px;min-height:100vh}
 
@@ -35,10 +37,10 @@
     .about-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:50px}
     .about-img{flex:1;text-align:center}
     .about-img img{width:280px;height:280px;border-radius:60%;border:22px solid #e0e0e0;
-      box-shadow:0 0 20px rgba(0,0,0,.3);background:#000;object-fit:cover}
+      box-shadow:0 0 20px rgba(0,0,0,.3);background:#000;object-fit:cover;margin:0 auto}
     .about-content{flex:1.5}
     .about-content h2{text-align:center;color:#111;font-size:36px;margin-bottom:10px}
-    .about-content h3{text-align:center;font-weight:200;color:#e91e63;margin: bottom 30px;px}
+    .about-content h3{text-align:center;font-weight:200;color:#e91e63;margin-bottom:30px}
     .about-content h4{font-size:18px;font-weight:300;margin-bottom:4px;font-style:italic;color:#555}
     .about-content h1{font-size:26px;margin-bottom:10px}
     .about-content h1 span{color:#e91e63}
@@ -105,6 +107,27 @@
 
     /* Footer */
     footer{text-align:center;background:#111;padding:20px;color:#ccc}
+
+    /* ====== Responsive (mobile-first tweaks without changing desktop dimensions) ====== */
+    @media (max-width: 992px){
+      header{padding:16px 24px}
+      section{padding:120px 24px 64px}
+      .hero{justify-content:center;text-align:center}
+      .hero img{width:min(80vw,380px);margin:0 auto}
+      .skills-left{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media (max-width: 640px){
+      .hero-text h2{font-size:34px}
+      .hero-text h3{font-size:20px}
+      .btn:hover{transform:translateY(-6px)} /* soften jump only on small screens */
+      .row{flex-wrap:wrap}
+      .row input{flex:1 1 100%}
+      .about-img img{width:240px;height:240px}
+      .skills-left{grid-template-columns:repeat(3,1fr);gap:20px}
+      .skills-left img{width:72px}
+      .project-grid,.cert-grid{grid-template-columns:1fr}
+      nav{gap:12px}
+    }
   </style>
 </head>
 <body>
@@ -126,9 +149,9 @@
     <div class="hero-text">
       <h2>Hello, my name is <br><span style="color:#e91e63;font-size:48px;">Prince Kumar</span></h2>
       <h3>And I'm a <span id="typed" class="typing-cursor"></span></h3>
-      <p>Aspiring data-driven Post Gradudation Deploma in Management (PGDM) student at GL Bajaj Institute of Management and Research, specializing in Data Analytics. Proficient in Excel, Python, SQL, Power BI, and data visualization with strong
+      <p>Aspiring data-driven Post Graduate Diploma in Management (PGDM) student at GL Bajaj Institute of Management and Research, specializing in Data Analytics. Proficient in Excel, Python, SQL, Power BI, and data visualization with strong
          problem-solving, leadership, and teamwork skills to deliver actionable business insights.
-</p>
+      </p>
 
       <!-- CTA + Social (centered) -->
       <div style="text-align:center; margin-top:10px;">
@@ -142,7 +165,7 @@
           <a href="https://x.com/prince_0809?t=yhlsJRb5kB0qEznr1vhMOQ&s=09" title="Twitter/X" target="_blank" rel="noopener"
              style="font-size:26px; color:#fff; text-decoration:none;">
             <i class="fab fa-x-twitter"></i>
-
+          </a>
           <a href="mailto:prince11051999@gmail.com" title="Email" target="_blank" rel="noopener"
              style="font-size:26px; color:#fff; text-decoration:none;">
             <i class="fa-solid fa-envelope"></i>
@@ -155,14 +178,12 @@
              style="font-size:26px; color:#fff; text-decoration:none;">
             <i class="fab fa-github"></i>
           </a>
-          </a>
         </div>
       </div>
     </div>
     <!-- UPDATED IMAGE PATH -->
     <img src="Prince_Photo.jpg" alt="Prince Kumar">
   </section>
-
 
   <!-- ABOUT -->
   <section id="about" class="about-section">
@@ -178,8 +199,8 @@
       <div class="about-content">
         <h4>Delhi, India</h4>
         <h1>I'm Prince <span>Kumar</span></h1>
-        <p>My name is Prince, and I am currently a  <strong>second-year</strong> PGDM student at   <strong>GL Bajaj 
-            Institute of Management and Research</strong>. Specialization with  <strong>Data/Business Analytics</strong> and Marketing With strong proficiency in  <strong>Excel, Python, SQL,Power BI</strong>, and <strong>data visualization</strong>,
+        <p>My name is Prince, and I am currently a  <strong>second-year</strong> PGDM student at <strong>GL Bajaj 
+            Institute of Management and Research</strong>. Specialization with <strong>Data/Business Analytics</strong> and Marketing with strong proficiency in <strong>Excel, Python, SQL, Power BI</strong>, and <strong>data visualization</strong>,
              I am passionate about transforming raw data into actionable business insights. My experience includes conducting <strong>Market
               Research at Indian Oil Corporation Ltd</strong>., where I analyzed <strong>Global Polymer Markets</strong> to optimize strategies and enhance 
               performance. I take pride in my ability to blend analytical thinking with creativity, teamwork, and leadership to deliver
@@ -260,9 +281,9 @@
       <div class="cert-card"><img src="Data Science Bootcamp.jpg" alt="Data Scientist Certificate"><h4>Data Science</h4></div>
       <div class="cert-card"><img src="Business Intelligence & Analytics.jpg" alt="Python Certificate"><h4>Business Intelligence & Analytics</h4></div>
       <div class="cert-card"><img src="Python Basic.jpg" alt="ML Workshop"><h4>Python Basic</h4></div>
-            <div class="cert-card"><img src="Problem Intermediate.jpg" alt="ML Workshop"><h4>Problem Intermediate</h4></div>
-                  <div class="cert-card"><img src="SQL Basic.jpg" alt="ML Workshop"><h4>SQL Basic</h4></div>
-                                    <div class="cert-card"><img src="Power BI.jpg" alt="ML Workshop"><h4>Power BI</h4></div>
+      <div class="cert-card"><img src="Problem Intermediate.jpg" alt="ML Workshop"><h4>Problem Intermediate</h4></div>
+      <div class="cert-card"><img src="SQL Basic.jpg" alt="ML Workshop"><h4>SQL Basic</h4></div>
+      <div class="cert-card"><img src="Power BI.jpg" alt="ML Workshop"><h4>Power BI</h4></div>
     </div>
   </section>
 
