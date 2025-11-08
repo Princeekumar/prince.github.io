@@ -14,9 +14,9 @@
     header{background:#e91e63;display:flex;justify-content:space-between;align-items:center;
       padding:20px 70px;position:fixed;width:100%;top:0;z-index:999}
     header h1{font-size:28px;font-weight:700;color:#fff}
-    nav{display:flex;gap:20px;flex-wrap:wrap}
-    nav a{color:#fff;text-decoration:none;margin:0 0;font-weight:600;transition:.3s}
-    nav a:hover{color:#ffe}
+    .nav-desktop{display:flex;gap:20px;flex-wrap:wrap}
+    .nav-desktop a{color:#fff;text-decoration:none;font-weight:600;transition:.3s}
+    .nav-desktop a:hover{color:#ffe}
     section{padding:130px 80px 80px;min-height:100vh}
 
     /* Hero */
@@ -98,9 +98,9 @@
     .contact-info a:hover{text-decoration:underline}
     .contact-form{flex:1}
     form{display:flex;flex-direction:column;gap:15px}
-    input,textarea{width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+    input,textarea{width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:8px;font-size:15px;background:#fff;color:#111}
     input:focus,textarea:focus{outline:none;border-color:#e91e63;box-shadow:0 0 5px rgba(233,30,99,0.4)}
-    .row{display:flex;gap:15px}
+    .row{display:flex;gap:15px;flex-wrap:nowrap}
     .contact-form button{background:#e91e63;color:#fff;padding:12px 30px;border:none;border-radius:8px;
       font-weight:600;cursor:pointer;width:fit-content;transition:.3s}
     .contact-form button:hover{background:#ff3369;transform:translateY(-2px)}
@@ -108,25 +108,32 @@
     /* Footer */
     footer{text-align:center;background:#111;padding:20px;color:#ccc}
 
-    /* ====== Responsive (mobile-first tweaks without changing desktop dimensions) ====== */
+    /* ===== Mobile match (<= 992px) — look like screenshots, desktop unchanged ===== */
+    .menu-btn{display:none;background:transparent;border:0;color:#fff;font-size:26px;cursor:pointer}
+    .nav-mobile{display:none;position:fixed;top:64px;right:16px;background:#e91e63;border-radius:12px;
+      padding:12px 8px;box-shadow:0 12px 30px rgba(0,0,0,.35);z-index:1000}
+    .nav-mobile a{display:block;color:#fff;text-decoration:none;padding:10px 16px;margin:2px 4px;border-radius:8px}
+    .nav-mobile a:hover{background:rgba(255,255,255,.12)}
+    .header-open .nav-mobile{display:block}
+
     @media (max-width: 992px){
       header{padding:16px 24px}
       section{padding:120px 24px 64px}
+      .nav-desktop{display:none}
+      .menu-btn{display:block}
       .hero{justify-content:center;text-align:center}
       .hero img{width:min(80vw,380px);margin:0 auto}
-      .skills-left{grid-template-columns:repeat(3,minmax(0,1fr))}
-    }
-    @media (max-width: 640px){
-      .hero-text h2{font-size:34px}
-      .hero-text h3{font-size:20px}
-      .btn:hover{transform:translateY(-6px)} /* soften jump only on small screens */
-      .row{flex-wrap:wrap}
-      .row input{flex:1 1 100%}
-      .about-img img{width:240px;height:240px}
+      .btn:hover{transform:translateY(-6px)}       /* softer jump on mobile */
+      .project-grid,.cert-grid{grid-template-columns:1fr}
+      .row{flex-wrap:wrap}                         /* contact two inputs stack */
       .skills-left{grid-template-columns:repeat(3,1fr);gap:20px}
       .skills-left img{width:72px}
-      .project-grid,.cert-grid{grid-template-columns:1fr}
-      nav{gap:12px}
+    }
+
+    @media (max-width:640px){
+      .hero-text h2{font-size:34px}
+      .hero-text h3{font-size:20px}
+      .about-img img{width:240px;height:240px}
     }
   </style>
 </head>
@@ -134,7 +141,23 @@
   <!-- Header -->
   <header>
     <h1>Portfolio</h1>
-    <nav>
+
+    <!-- desktop nav -->
+    <nav class="nav-desktop">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- hamburger -->
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <!-- mobile panel -->
+    <nav class="nav-mobile" aria-hidden="true">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -149,18 +172,15 @@
     <div class="hero-text">
       <h2>Hello, my name is <br><span style="color:#e91e63;font-size:48px;">Prince Kumar</span></h2>
       <h3>And I'm a <span id="typed" class="typing-cursor"></span></h3>
-      <p>Aspiring data-driven Post Graduate Diploma in Management (PGDM) student at GL Bajaj Institute of Management and Research, specializing in Data Analytics. Proficient in Excel, Python, SQL, Power BI, and data visualization with strong
-         problem-solving, leadership, and teamwork skills to deliver actionable business insights.
-      </p>
+      <p>Aspiring data-driven Post Gradudation Deploma in Management (PGDM) student at GL Bajaj Institute of Management and Research, specializing in Data Analytics. Proficient in Excel, Python, SQL, Power BI, and data visualization with strong problem-solving, leadership, and teamwork skills to deliver actionable business insights.</p>
 
-      <!-- CTA + Social (centered) -->
       <div style="text-align:center; margin-top:10px;">
         <a href="Prince_Kumar_Resume_for_Analytics.pdf" class="btn" download
            style="margin:0 auto; display:inline-block;">
           <i class="fa-solid fa-download"></i> Hire me
         </a>
 
-        <!-- Social icons under the button -->
+        <!-- Social icons -->
         <div style="margin-top:16px; display:flex; justify-content:center; gap:18px;">
           <a href="https://x.com/prince_0809?t=yhlsJRb5kB0qEznr1vhMOQ&s=09" title="Twitter/X" target="_blank" rel="noopener"
              style="font-size:26px; color:#fff; text-decoration:none;">
@@ -181,7 +201,6 @@
         </div>
       </div>
     </div>
-    <!-- UPDATED IMAGE PATH -->
     <img src="Prince_Photo.jpg" alt="Prince Kumar">
   </section>
 
@@ -193,19 +212,16 @@
     </div>
     <div class="about-container">
       <div class="about-img">
-        <!-- UPDATED IMAGE PATH -->
         <img src="Prince_Photo.jpg" alt="Prince Kumar">
       </div>
       <div class="about-content">
         <h4>Delhi, India</h4>
         <h1>I'm Prince <span>Kumar</span></h1>
-        <p>My name is Prince, and I am currently a  <strong>second-year</strong> PGDM student at <strong>GL Bajaj 
+        <p>My name is Prince, and I am currently a <strong>second-year</strong> PGDM student at <strong>GL Bajaj 
             Institute of Management and Research</strong>. Specialization with <strong>Data/Business Analytics</strong> and Marketing with strong proficiency in <strong>Excel, Python, SQL, Power BI</strong>, and <strong>data visualization</strong>,
              I am passionate about transforming raw data into actionable business insights. My experience includes conducting <strong>Market
               Research at Indian Oil Corporation Ltd</strong>., where I analyzed <strong>Global Polymer Markets</strong> to optimize strategies and enhance 
-              performance. I take pride in my ability to blend analytical thinking with creativity, teamwork, and leadership to deliver
-               measurable results. Committed to continuous learning and innovation, I aim to leverage my technical and analytical 
-               expertise to solve real-world business challenges and drive sustainable growth.</p>
+              performance. I blend analytical thinking with creativity, teamwork, and leadership to deliver measurable results.</p>
         <a href="Prince_Kumar_Resume_for_Analytics.pdf" class="btn" download>
           <i class="fa-solid fa-download"></i> Download CV
         </a>
@@ -221,27 +237,17 @@
       <div class="project-card">
         <div class="project-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
         <h4>California Housing Price Prediction</h4>
-        <p>Built a predictive model using Python to estimate California housing prices accurately. 
-            Leveraged regression techniques and data visualization for insights, 
-            enhancing real estate decision-making while improving analytical and 
-            machine learning skills through collaborative data-driven project development and 
-            practical implementation.</p>
+        <p>Built a predictive model using Python to estimate California housing prices accurately. Leveraged regression and visualization for insights.</p>
       </div>
       <div class="project-card">
         <div class="project-icon"><i class="fa-solid fa-burger"></i></div>
         <h4>Amazon Sales Analysis Using SQL</h4>
-        <p>Analyzed Amazon’s sales data from three branches using SQL for product, sales, and customer insights. 
-            Performed data wrangling, feature engineering, and exploratory analysis to identify top-performing 
-            products, revenue trends, customer behavior, and rating patterns, helping optimize sales strategies 
-            and improve business decision-making efficiency.</p>
+        <p>Analyzed sales from three branches to find top products, revenue trends, and rating patterns for better decisions.</p>
       </div>
       <div class="project-card">
         <div class="project-icon"><i class="fa-solid fa-key"></i></div>
         <h4>EdTech Startup Data Analysis using PowerBI</h4>
-        <p>Analyzed EdTech data to develop a dynamic dashboard providing insights into course categories, views, languages,
-             and instructor performance. Evaluated factors like subtitles, duration, and skill diversity to identify growth 
-             opportunities, optimize learner engagement,
-             and enhance strategic decision-making for recorded lecture offerings.</p>
+        <p>Built a dashboard for categories, views, languages, and instructor performance to optimize engagement.</p>
       </div>
     </div>
   </section>
@@ -258,7 +264,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="NumPy">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib">
-        <img src="MySQL.jpg" alt="Structured Query Language">
+        <img src="MySQL.jpg" alt="SQL">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
       </div>
       <div class="skills-right">
@@ -279,11 +285,11 @@
     <h3>—— Achievements ——</h3>
     <div class="cert-grid">
       <div class="cert-card"><img src="Data Science Bootcamp.jpg" alt="Data Scientist Certificate"><h4>Data Science</h4></div>
-      <div class="cert-card"><img src="Business Intelligence & Analytics.jpg" alt="Python Certificate"><h4>Business Intelligence & Analytics</h4></div>
-      <div class="cert-card"><img src="Python Basic.jpg" alt="ML Workshop"><h4>Python Basic</h4></div>
-      <div class="cert-card"><img src="Problem Intermediate.jpg" alt="ML Workshop"><h4>Problem Intermediate</h4></div>
-      <div class="cert-card"><img src="SQL Basic.jpg" alt="ML Workshop"><h4>SQL Basic</h4></div>
-      <div class="cert-card"><img src="Power BI.jpg" alt="ML Workshop"><h4>Power BI</h4></div>
+      <div class="cert-card"><img src="Business Intelligence & Analytics.jpg" alt="BI & Analytics"><h4>Business Intelligence & Analytics</h4></div>
+      <div class="cert-card"><img src="Python Basic.jpg" alt="Python"><h4>Python Basic</h4></div>
+      <div class="cert-card"><img src="Problem Intermediate.jpg" alt="Problem Solving"><h4>Problem Intermediate</h4></div>
+      <div class="cert-card"><img src="SQL Basic.jpg" alt="SQL"><h4>SQL Basic</h4></div>
+      <div class="cert-card"><img src="Power BI.jpg" alt="Power BI"><h4>Power BI</h4></div>
     </div>
   </section>
 
@@ -315,7 +321,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>© 2025 Prince Kumar. All Rights Reserved.</footer>
 
   <!-- JS -->
@@ -337,7 +342,7 @@
     }
     document.addEventListener("DOMContentLoaded", type);
 
-    // Animate skill bars when visible
+    // Skill bars when visible
     const observer = new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
@@ -347,6 +352,22 @@
       });
     }, {threshold: .3});
     observer.observe(document.querySelector('#skills'));
+
+    // Mobile hamburger toggle
+    const btn = document.querySelector('.menu-btn');
+    const mobileNav = document.querySelector('.nav-mobile');
+    btn?.addEventListener('click', ()=>{
+      const open = document.body.classList.toggle('header-open');
+      btn.setAttribute('aria-expanded', open);
+      mobileNav.setAttribute('aria-hidden', !open);
+    });
+    mobileNav.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        document.body.classList.remove('header-open');
+        btn.setAttribute('aria-expanded','false');
+        mobileNav.setAttribute('aria-hidden','true');
+      });
+    });
   </script>
 </body>
 </html>
