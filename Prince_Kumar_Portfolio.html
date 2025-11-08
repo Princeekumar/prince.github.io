@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince Kumar | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth}
+    body{background:#020b19;color:#fff;overflow-x:hidden;line-height:1.6}
+
+    /* Header */
+    header{background:#e91e63;display:flex;justify-content:space-between;align-items:center;
+      padding:20px 70px;position:fixed;width:100%;top:0;z-index:999}
+    header h1{font-size:28px;font-weight:700;color:#fff}
+    nav a{color:#fff;text-decoration:none;margin:0 20px;font-weight:600;transition:.3s}
+    nav a:hover{color:#ffe}
+    section{padding:130px 80px 80px;min-height:100vh}
+
+    /* Hero */
+    .hero{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:40px}
+    .hero-text h2{font-size:40px;font-weight:700;margin-bottom:10px}
+    .hero-text h3{font-size:24px;font-weight:600;margin-bottom:10px}
+    .hero-text h3 span{color:#e91e63}
+    .typing-cursor{border-right:3px solid #e91e63;animation:blink .7s steps(1) infinite}
+    @keyframes blink{50%{border-color:transparent}}
+    .hero-text p{max-width:600px;color:#ddd;margin-top:15px;font-size:16px}
+    .btn{display:inline-block;margin-top:20px;padding:12px 30px;background:#e91e63;
+      color:#fff;border-radius:90px;text-decoration:none;font-weight:900;transition:.3s}
+    .btn:hover{background:#ff4081;transform:translateY(-40px)}
+    .hero img{width:380px;border-radius:90%;box-shadow:0 0 90px #e91e63;object-fit:cover}
+
+    /* About */
+    .about-section{background:#f4f0e8;color:#111}
+    .about-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:50px}
+    .about-img{flex:1;text-align:center}
+    .about-img img{width:280px;height:280px;border-radius:60%;border:22px solid #e0e0e0;
+      box-shadow:0 0 20px rgba(0,0,0,.3);background:#000;object-fit:cover}
+    .about-content{flex:1.5}
+    .about-content h2{text-align:center;color:#111;font-size:36px;margin-bottom:10px}
+    .about-content h3{text-align:center;font-weight:200;color:#e91e63;margin: bottom 30px;px}
+    .about-content h4{font-size:18px;font-weight:300;margin-bottom:4px;font-style:italic;color:#555}
+    .about-content h1{font-size:26px;margin-bottom:10px}
+    .about-content h1 span{color:#e91e63}
+    .about-content p{font-size:15px;color:#333;margin-bottom:15px}
+
+    /* Projects */
+    .projects-section{text-align:center;background:#0a0a0a}
+    .projects-section h2{font-size:36px;margin-bottom:8px}
+    .projects-section h3{color:#e91e63;margin-bottom:40px;font-weight:500}
+    .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;justify-content:center}
+    .project-card{background:#1a1a1a;border-radius:12px;padding:30px;text-align:center;
+      box-shadow:0 0 20px rgba(233,30,99,0.2);transition:.3s}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 0 25px rgba(233,30,99,0.4)}
+    .project-icon{font-size:40px;color:#e91e63;margin-bottom:15px}
+    .project-card h4{font-size:20px;margin-bottom:12px}
+    .project-card p{font-size:14px;color:#ccc}
+
+    /* Skills */
+    .skills-section{text-align:center;background:#f4f0e8;color:#111}
+    .skills-section h2{font-size:36px;margin-bottom:10px}
+    .skills-section h3{font-size:18px;font-weight:500;color:#e91e63;margin-bottom:50px}
+    .skills-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:50px}
+    .skills-left{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;justify-items:center}
+    .skills-left img{width:90px;transition:.3s}
+    .skills-left img:hover{transform:scale(1.1)}
+    .skills-right{flex:1.2}
+    .bar{margin-bottom:20px}
+    .bar span{display:flex;justify-content:space-between;font-weight:600;font-size:15px;margin-bottom:6px}
+    .progress{background:#ccc;height:8px;border-radius:10px;overflow:hidden}
+    .progress div{height:8px;background:#e91e63;width:0;animation:fill 2s forwards;border-radius:10px}
+    @keyframes fill{to{width:var(--level)}}
+
+    /* Certificates */
+    .certificates{text-align:center;background:#0a0a0a}
+    .certificates h2{font-size:36px;margin-bottom:8px}
+    .certificates h3{color:#e91e63;font-weight:500;margin-bottom:40px}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;justify-content:center}
+    .cert-card{background:#1a1a1a;border-radius:15px;padding:15px;text-align:center;
+      box-shadow:0 0 15px rgba(233,30,99,0.3);transition:.3s}
+    .cert-card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(233,30,99,0.5)}
+    .cert-card img{width:100%;height:200px;object-fit:cover;border-radius:10px;border:3px solid #e91e63}
+    .cert-card h4{margin-top:15px;font-size:18px}
+
+    /* Contact */
+    .contact-section{text-align:center;background:#f4f0e8;color:#111}
+    .contact-section h2{font-size:36px;margin-bottom:8px}
+    .contact-section h3{font-size:18px;color:#e91e63;margin-bottom:50px;font-weight:500}
+    .contact-container{display:flex;justify-content:space-between;align-items:flex-start;gap:50px;flex-wrap:wrap;text-align:left}
+    .contact-info{flex:1;color:#333}
+    .contact-info h4{font-size:22px;margin-bottom:10px;color:#111}
+    .contact-info p{font-size:15px;margin-bottom:20px;line-height:1.6;color:#444}
+    .contact-info .info-item{display:flex;align-items:flex-start;margin-bottom:20px;gap:10px}
+    .contact-info .info-item i{font-size:20px;color:#e91e63;margin-top:3px}
+    .contact-info a{color:#0066ff;text-decoration:none}
+    .contact-info a:hover{text-decoration:underline}
+    .contact-form{flex:1}
+    form{display:flex;flex-direction:column;gap:15px}
+    input,textarea{width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+    input:focus,textarea:focus{outline:none;border-color:#e91e63;box-shadow:0 0 5px rgba(233,30,99,0.4)}
+    .row{display:flex;gap:15px}
+    .contact-form button{background:#e91e63;color:#fff;padding:12px 30px;border:none;border-radius:8px;
+      font-weight:600;cursor:pointer;width:fit-content;transition:.3s}
+    .contact-form button:hover{background:#ff3369;transform:translateY(-2px)}
+
+    /* Footer */
+    footer{text-align:center;background:#111;padding:20px;color:#ccc}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Portfolio</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h2>Hello, my name is <br><span style="color:#e91e63;font-size:48px;">Prince Kumar</span></h2>
+      <h3>And I'm a <span id="typed" class="typing-cursor"></span></h3>
+      <p>Aspiring data-driven Post Gradudation Deploma in Management (PGDM) student at GL Bajaj Institute of Management and Research, specializing in Data Analytics. Proficient in Excel, Python, SQL, Power BI, and data visualization with strong
+         problem-solving, leadership, and teamwork skills to deliver actionable business insights.
+</p>
+
+      <!-- CTA + Social (centered) -->
+      <div style="text-align:center; margin-top:10px;">
+        <a href="Prince_Kumar_Resume_for_Analytics.pdf" class="btn" download
+           style="margin:0 auto; display:inline-block;">
+          <i class="fa-solid fa-download"></i> Hire me
+        </a>
+
+        <!-- Social icons under the button -->
+        <div style="margin-top:16px; display:flex; justify-content:center; gap:18px;">
+          <a href="https://x.com/prince_0809?t=yhlsJRb5kB0qEznr1vhMOQ&s=09" title="Twitter/X" target="_blank" rel="noopener"
+             style="font-size:26px; color:#fff; text-decoration:none;">
+            <i class="fab fa-x-twitter"></i>
+
+          <a href="mailto:prince11051999@gmail.com" title="Email" target="_blank" rel="noopener"
+             style="font-size:26px; color:#fff; text-decoration:none;">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/prince-kumar-marketing-data-analytics-business-analytics" title="LinkedIn" target="_blank" rel="noopener"
+             style="font-size:26px; color:#fff; text-decoration:none;">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/princeekumar" title="GitHub" target="_blank" rel="noopener"
+             style="font-size:26px; color:#fff; text-decoration:none;">
+            <i class="fab fa-github"></i>
+          </a>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- UPDATED IMAGE PATH -->
+    <img src="Prince_Photo.jpg" alt="Prince Kumar">
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <h2>ABOUT ME</h2>
+      <h3>—— Who I am ——</h3>
+    </div>
+    <div class="about-container">
+      <div class="about-img">
+        <!-- UPDATED IMAGE PATH -->
+        <img src="Prince_Photo.jpg" alt="Prince Kumar">
+      </div>
+      <div class="about-content">
+        <h4>Delhi, India</h4>
+        <h1>I'm Prince <span>Kumar</span></h1>
+        <p>My name is Prince, and I am currently a  <strong>second-year</strong> PGDM student at   <strong>GL Bajaj 
+            Institute of Management and Research</strong>. Specialization with  <strong>Data/Business Analytics</strong> and Marketing With strong proficiency in  <strong>Excel, Python, SQL,Power BI</strong>, and <strong>data visualization</strong>,
+             I am passionate about transforming raw data into actionable business insights. My experience includes conducting <strong>Market
+              Research at Indian Oil Corporation Ltd</strong>., where I analyzed <strong>Global Polymer Markets</strong> to optimize strategies and enhance 
+              performance. I take pride in my ability to blend analytical thinking with creativity, teamwork, and leadership to deliver
+               measurable results. Committed to continuous learning and innovation, I aim to leverage my technical and analytical 
+               expertise to solve real-world business challenges and drive sustainable growth.</p>
+        <a href="Prince_Kumar_Resume_for_Analytics.pdf" class="btn" download>
+          <i class="fa-solid fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <h2>MY PROJECTS</h2>
+    <h3>—— Innovation ——</h3>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <h4>California Housing Price Prediction</h4>
+        <p>Built a predictive model using Python to estimate California housing prices accurately. 
+            Leveraged regression techniques and data visualization for insights, 
+            enhancing real estate decision-making while improving analytical and 
+            machine learning skills through collaborative data-driven project development and 
+            practical implementation.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-solid fa-burger"></i></div>
+        <h4>Amazon Sales Analysis Using SQL</h4>
+        <p>Analyzed Amazon’s sales data from three branches using SQL for product, sales, and customer insights. 
+            Performed data wrangling, feature engineering, and exploratory analysis to identify top-performing 
+            products, revenue trends, customer behavior, and rating patterns, helping optimize sales strategies 
+            and improve business decision-making efficiency.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-solid fa-key"></i></div>
+        <h4>EdTech Startup Data Analysis using PowerBI</h4>
+        <p>Analyzed EdTech data to develop a dynamic dashboard providing insights into course categories, views, languages,
+             and instructor performance. Evaluated factors like subtitles, duration, and skill diversity to identify growth 
+             opportunities, optimize learner engagement,
+             and enhance strategic decision-making for recorded lecture offerings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <h2>MY SKILLS</h2>
+    <h3>—— What I Know ——</h3>
+
+    <div class="skills-container">
+      <div class="skills-left">
+        <img src="Excel.jpg" alt="EXCEL">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="NumPy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="Matplotlib">
+        <img src="MySQL.jpg" alt="Structured Query Language">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+      </div>
+      <div class="skills-right">
+        <div class="bar"><span><b>Excel</b><b>85%</b></span><div class="progress"><div style="--level:85%"></div></div></div>
+        <div class="bar"><span><b>Python</b><b>75%</b></span><div class="progress"><div style="--level:75%"></div></div></div>
+        <div class="bar"><span><b>NumPy</b><b>80%</b></span><div class="progress"><div style="--level:80%"></div></div></div>
+        <div class="bar"><span><b>Pandas</b><b>80%</b></span><div class="progress"><div style="--level:80%"></div></div></div>
+        <div class="bar"><span><b>Matplotlib</b><b>80%</b></span><div class="progress"><div style="--level:80%"></div></div></div>
+        <div class="bar"><span><b>SQL</b><b>85%</b></span><div class="progress"><div style="--level:85%"></div></div></div>
+        <div class="bar"><span><b>Power BI</b><b>85%</b></span><div class="progress"><div style="--level:85%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="achievements" class="certificates">
+    <h2>CERTIFICATE & PATENT</h2>
+    <h3>—— Achievements ——</h3>
+    <div class="cert-grid">
+      <div class="cert-card"><img src="Data Science Bootcamp.jpg" alt="Data Scientist Certificate"><h4>Data Science</h4></div>
+      <div class="cert-card"><img src="Business Intelligence & Analytics.jpg" alt="Python Certificate"><h4>Business Intelligence & Analytics</h4></div>
+      <div class="cert-card"><img src="Python Basic.jpg" alt="ML Workshop"><h4>Python Basic</h4></div>
+            <div class="cert-card"><img src="Problem Intermediate.jpg" alt="ML Workshop"><h4>Problem Intermediate</h4></div>
+                  <div class="cert-card"><img src="SQL Basic.jpg" alt="ML Workshop"><h4>SQL Basic</h4></div>
+                                    <div class="cert-card"><img src="Power BI.jpg" alt="ML Workshop"><h4>Power BI</h4></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <h2>CONTACT ME</h2>
+    <h3>—— Get In Touch ——</h3>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h4>Get in Touch</h4>
+        <p>Reach out for collaborations or roles. I’ll respond quickly.</p>
+        <div class="info-item"><i class="fa-solid fa-user"></i><div><b>Name</b><br>Prince Kumar</div></div>
+        <div class="info-item"><i class="fa-solid fa-location-dot"></i><div><b>Address</b><br>Delhi, India</div></div>
+        <div class="info-item"><i class="fa-solid fa-envelope"></i><div><b>Email</b><br>
+          <a href="mailto:prince11051999@gmail.com">prince11051999@gmail.com</a></div></div>
+      </div>
+      <div class="contact-form">
+        <h4 style="margin-bottom:15px;color:#111;">Message me</h4>
+        <form action="mailto:prince11051999@gmail.com" method="post" enctype="text/plain">
+          <div class="row">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <input type="text" name="subject" placeholder="Subject">
+          <textarea name="message" rows="5" placeholder="Message.." required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>© 2025 Prince Kumar. All Rights Reserved.</footer>
+
+  <!-- JS -->
+  <script>
+    // Typing effect
+    const words = ["Coder.", "Data Analyst.", "Business Analyst.", "Student@GL Bajaj."];
+    let i = 0, j = 0, currentWord = "", isDeleting = false;
+    const typed = document.getElementById("typed");
+    function type() {
+      currentWord = words[i];
+      if (isDeleting) {
+        typed.textContent = currentWord.substring(0, j--);
+        if (j < 0) { isDeleting = false; i = (i + 1) % words.length; }
+      } else {
+        typed.textContent = currentWord.substring(0, j++);
+        if (j > currentWord.length) { isDeleting = true; setTimeout(type, 1200); return; }
+      }
+      setTimeout(type, isDeleting ? 80 : 150);
+    }
+    document.addEventListener("DOMContentLoaded", type);
+
+    // Animate skill bars when visible
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          document.querySelectorAll('.progress div')
+            .forEach(bar=>{ bar.style.width = bar.style.getPropertyValue('--level'); });
+        }
+      });
+    }, {threshold: .3});
+    observer.observe(document.querySelector('#skills'));
+  </script>
+</body>
+</html>
